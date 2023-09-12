@@ -1,0 +1,79 @@
+#root {
+  margin: 0 auto;
+  padding: 0;
+}
+
+:root {
+  --text-color: rgb(169, 169, 169)
+}
+
+body {
+  background-color: #333 !important;
+  margin: 0;
+  color: rgb(184, 184, 184) !important;
+}
+
+/* The crossed lines background */
+body::before {
+  opacity: 0.1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.2) 10px, rgba(255, 255, 255, 0.2) 20px),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.2) 10px, rgba(255, 255, 255, 0.2) 20px);
+  background-size: 40px 40px;
+  z-index: -1; /* Place the lines behind content */
+  animation: move-crossed-lines 20s linear infinite; /* Add animation for movement */
+}
+
+@keyframes move-crossed-lines {
+  0% {
+    background-position: 0 0, 20px 20px;
+  }
+  100% {
+    background-position: 40px 40px, 20px 20px;
+  }
+}
+
+/* The blue color overlay with opacity */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 108, 0.5), rgba(0, 0, 108, 0.5));
+  z-index: -2; /* Place the overlay behind the crossed lines */
+}
+
+
+/* Home.css */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid white;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.scroll-to-top-button:hover {
+  background-color: white;
+  color: black;
+}
+
